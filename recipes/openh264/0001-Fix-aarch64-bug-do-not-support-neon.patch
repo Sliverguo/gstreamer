@@ -1,0 +1,25 @@
+From 0aa0844836ad206ad869eb36cd17429eb7c6e8a3 Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Mon, 5 Aug 2019 14:57:39 +0800
+Subject: [PATCH] Fix aarch64 bug do not support neon
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ build/arch.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/arch.mk b/build/arch.mk
+index f3ccf8a..60f7de1 100644
+--- a/build/arch.mk
++++ b/build/arch.mk
+@@ -26,6 +26,6 @@ ifneq ($(filter arm64 aarch64, $(ARCH)),)
+ ifeq ($(USE_ASM), Yes)
+ ASM_ARCH = arm64
+ ASMFLAGS += -I$(SRC_PATH)codec/common/arm64/
+-CFLAGS += -DHAVE_NEON_AARCH64
++#CFLAGS += -DHAVE_NEON_AARCH64
+ endif
+ endif
+-- 
+2.7.4
+

@@ -14,7 +14,9 @@ class Recipe(recipe.Recipe):
     files_devel = ['include/wels', 'lib/pkgconfig/openh264.pc']
     patches = ['openh264/0001-openh264-Build-for-8.0-fembed-bitcode.patch',
                'openh264/0002-ios-Remove-flags-incompatible-with-fembed-bitcode.patch',
-               'openh264/0001-android-build-switch-to-using-the-c-_shared-c-librar.patch']
+               'openh264/0001-android-build-switch-to-using-the-c-_shared-c-librar.patch',
+               'openh264/0001-Fix-aarch64-bug-do-not-support-neon.patch',
+               'openh264/0001-Add-complie-mk-file-for-aarch64.patch']
 
     def prepare(self):
         make = self.make
@@ -62,7 +64,7 @@ class Recipe(recipe.Recipe):
             elif self.config.target_arch == Architecture.ARM:
                 make += ' ARCH=arm APP_ABI=armeabi'
             elif self.config.target_arch == Architecture.ARM64:
-                make += ' ARCH=arm64'
+                make += ' ARCH=arm64 OS=arm64'
 
         self.make = make + ' libraries'
         # `make install` also needs the exact same parameters as `make`

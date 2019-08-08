@@ -1,0 +1,26 @@
+From 596c4d35a911597119b2df517cbfb87259ad8f02 Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Fri, 2 Aug 2019 16:17:50 +0800
+Subject: [PATCH] Fix corss compile bug when on arm64 platform
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index fe38936..e449b08 100644
+--- a/meson.build
++++ b/meson.build
+@@ -111,6 +111,8 @@ endif
+ 
+ common_cflags = cc.get_supported_arguments(test_cflags)
+ 
++common_cflags = ['-lffi']
++
+ common_ldflags = []
+ if host_system == 'linux'
+   ldflags = [ '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', '-Wl,-z,now', ]
+-- 
+2.7.4
+

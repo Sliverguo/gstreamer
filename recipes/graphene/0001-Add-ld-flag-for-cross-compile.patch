@@ -1,0 +1,26 @@
+From 0ad9e61ce0e4776c55acb67b05e85884f6ecc0f9 Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Fri, 2 Aug 2019 15:58:07 +0800
+Subject: [PATCH] Add ld flag for cross compile
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index fe38936..1163d35 100644
+--- a/meson.build
++++ b/meson.build
+@@ -113,7 +113,7 @@ common_cflags = cc.get_supported_arguments(test_cflags)
+ 
+ common_ldflags = []
+ if host_system == 'linux'
+-  ldflags = [ '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', '-Wl,-z,now', ]
++  ldflags = [ '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', '-Wl,-z,now', '-lffi' ]
+   if meson.version().version_compare('>= 0.46.0')
+     common_ldflags += cc.get_supported_link_arguments(ldflags)
+   elif cc.get_id() == 'gcc'
+-- 
+2.7.4
+

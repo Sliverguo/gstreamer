@@ -1,0 +1,35 @@
+From 477d8dbaa08af219f92abfc01f501431bbe419b3 Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Mon, 5 Aug 2019 15:40:43 +0800
+Subject: [PATCH] Add complie mk file for aarch64
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ build/platform-arm64.mk | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+ create mode 100644 build/platform-arm64.mk
+
+diff --git a/build/platform-arm64.mk b/build/platform-arm64.mk
+new file mode 100644
+index 0000000..922e6ba
+--- /dev/null
++++ b/build/platform-arm64.mk
+@@ -0,0 +1,15 @@
++ARCH = arm64
++include $(SRC_PATH)build/arch.mk
++
++SHAREDLIBSUFFIX = so
++SHAREDLIBSUFFIXFULLVER=$(SHAREDLIBSUFFIX).$(FULL_VERSION)
++SHAREDLIBSUFFIXMAJORVER=$(SHAREDLIBSUFFIX).$(SHAREDLIB_MAJORVERSION)
++SHLDFLAGS = -Wl,-soname,$(LIBPREFIX)$(PROJECT_NAME).$(SHAREDLIBSUFFIXMAJORVER)
++CFLAGS += -Wall -fno-strict-aliasing -fPIC -MMD -MP
++LDFLAGS += -lpthread
++
++TOOLCHAINPREFIX =  /opt/rk3308/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-
++
++CXX = $(TOOLCHAINPREFIX)g++
++CC = $(TOOLCHAINPREFIX)gcc
++AR = $(TOOLCHAINPREFIX)ar
+-- 
+2.7.4
+

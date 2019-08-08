@@ -336,6 +336,7 @@ class Config (object):
             xdgdatadir += ":/usr/share:/usr/local/share"
 
         ldflags = '-L%s ' % libdir
+        ldflags += '-Wl,-rpath,%s ' % libdir
         if ldflags not in os.environ.get('LDFLAGS', ''):
             ldflags += os.environ.get('LDFLAGS', '')
 
