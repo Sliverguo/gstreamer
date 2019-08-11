@@ -5,6 +5,6 @@ tools_prefix = '/opt/rk3308/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bi
 toolchain_prefix = '/opt/rk3308/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu'
 target_platform = Platform.LINUX
 target_distro = Distro.DEBIAN
-target_arch = Architecture.ARM64
+target_arch = Architecture.MIPS
 variants = ['noalsa', 'nox11', 'nopulse', 'nocdparanoia', 'nosdl',
             'nov4l2', 'notestspackage', 'nopython']

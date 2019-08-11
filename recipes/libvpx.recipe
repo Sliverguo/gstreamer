@@ -67,6 +67,8 @@ class Recipe(recipe.Recipe):
             arch = 'armv7s'
         elif self.config.target_arch == Architecture.ARM64:
             arch = 'arm64'
+        elif self.config.target_arch == Architecture.MIPS:
+            arch = 'mips'
 
         if self.config.target_platform in [Platform.DARWIN, Platform.IOS]:
             # make sure the linker uses the correct stdlib when building with
