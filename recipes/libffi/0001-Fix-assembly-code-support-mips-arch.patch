@@ -1,0 +1,29 @@
+From 1208643422e79acf3c453fb80b0306f948ce960f Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Mon, 12 Aug 2019 11:08:43 +0800
+Subject: [PATCH] Fix assembly code support mips arch
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ src/meson.build | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/meson.build b/src/meson.build
+index a1cad36..1e3f81d 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -61,6 +61,11 @@ elif host_cpu_family == 'arm'
+   TARGET = 'ARM'
+   c_sources = ['ffi.c']
+   asm_sources = ['sysv.S']
++elif host_cpu_family == 'mips'
++  arch_subdir = 'mips'
++  TARGET = 'MIPS'
++  c_sources = ['ffi.c']
++  asm_sources = ['o32.S','n32.S']
+ endif
+ 
+ if TARGET == ''
+-- 
+2.7.4
+

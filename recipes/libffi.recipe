@@ -8,7 +8,8 @@ class Recipe(recipe.Recipe):
     commit = '369ef49f71186fc9d6ab15614488ad466fac3fc1'
     licenses = [{License.BSD_like: ['LICENSE']}]
     btype = BuildType.MESON
-    patches = [name + '/libffi-port-to-meson-and-msvc.patch']
+    patches = [name + '/libffi-port-to-meson-and-msvc.patch',
+               name + '/0001-Fix-assembly-code-support-mips-arch.patch']
 
     files_libs = ['libffi']
     files_devel = ['include/ffi*.h', 'lib/pkgconfig/libffi.pc']
