@@ -1,8 +1,8 @@
 import os
 from cerbero.config import Platform, Architecture, Distro, DistroVersion
 
-tools_prefix = '/opt/rk3308/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-'
-toolchain_prefix = '/opt/rk3308/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu'
+tools_prefix = '/opt/x1800/toolchains/mips-gcc520-32bit/bin/mips-linux-gnu-'
+toolchain_prefix = '/opt/x1800/toolchains/mips-gcc520-32bit/'
 target_platform = Platform.LINUX
 target_distro = Distro.DEBIAN
 target_arch = Architecture.MIPS
