@@ -37,6 +37,7 @@ class Recipe(recipe.Recipe):
                'libvpx/0006-Fix-pkg-config-file-library-list.patch',
                'libvpx/0007-Always-generate-a-pkg-config-file-and-don-t-require-.patch',
                'libvpx/0001-gen_msvs_vcxproj.sh-Select-current-Windows-SDK-if-av.patch',
+               'libvpx/0001-Fix-connfigure-file-to-support-mips-linux-gcc.patch',
                ]
 
     files_libs = ['libvpx']

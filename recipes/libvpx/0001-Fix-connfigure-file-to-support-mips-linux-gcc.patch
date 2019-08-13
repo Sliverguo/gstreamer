@@ -1,0 +1,25 @@
+From 03a7b449ae8c60283bcb29ebbc1d450085792990 Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Tue, 13 Aug 2019 10:55:53 +0800
+Subject: [PATCH] Fix connfigure file to support mips-linux-gcc
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure b/configure
+index 05072b9..2653320 100755
+--- a/configure
++++ b/configure
+@@ -114,6 +114,7 @@ all_platforms="${all_platforms} armv7s-darwin-gcc"
+ all_platforms="${all_platforms} armv5te-android-gcc"
+ all_platforms="${all_platforms} armv8-linux-gcc"
+ all_platforms="${all_platforms} mips32-linux-gcc"
++all_platforms="${all_platforms} mips-linux-gcc"
+ all_platforms="${all_platforms} mips64-linux-gcc"
+ all_platforms="${all_platforms} ppc64-linux-gcc"
+ all_platforms="${all_platforms} ppc64le-linux-gcc"
+-- 
+2.7.4
+
