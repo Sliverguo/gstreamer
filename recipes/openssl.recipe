@@ -23,6 +23,8 @@ class Recipe(recipe.Recipe):
     files_libs = ['libcrypto', 'libssl']
     files_devel = ['include/openssl', 'lib/pkgconfig/openssl.pc',
                    'lib/pkgconfig/libssl.pc', 'lib/pkgconfig/libcrypto.pc']
+    patches = ['openssl/0001-Fix-configure-fail-for-mips-linux-gcc.patch']
+
 
     def prepare(self):
         # map platforms

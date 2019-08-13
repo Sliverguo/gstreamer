@@ -1,0 +1,33 @@
+From 32f8bf167a7a962fc1781e1a55523e36e5402bd8 Mon Sep 17 00:00:00 2001
+From: guodi <di.guo@aispeech.com>
+Date: Tue, 13 Aug 2019 11:51:22 +0800
+Subject: [PATCH] Fix configure fail for mips-linux-gcc
+
+Signed-off-by: guodi <di.guo@aispeech.com>
+---
+ Configurations/10-main.conf | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/Configurations/10-main.conf b/Configurations/10-main.conf
+index 5cf345d..59c9503 100644
+--- a/Configurations/10-main.conf
++++ b/Configurations/10-main.conf
+@@ -736,6 +736,15 @@ my %targets = (
+         lib_cppflags     => add("-DBN_DIV3W"),
+         perlasm_scheme   => "o32",
+     },
++    "linux-mips" => {
++        # Configure script adds minimally required -march for assembly
++        # support, if no -march was specified at command line.
++        inherit_from     => [ "linux-generic32", asm("mips32_asm") ],
++        cflags           => add("-mabi=32"),
++        cxxflags         => add("-mabi=32"),
++        lib_cppflags     => add("-DBN_DIV3W"),
++        perlasm_scheme   => "o32",
++    },
+     # mips32 and mips64 below refer to contemporary MIPS Architecture
+     # specifications, MIPS32 and MIPS64, rather than to kernel bitness.
+     "linux-mips64" => {
+-- 
+2.7.4
+
