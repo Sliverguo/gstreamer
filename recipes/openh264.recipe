@@ -65,6 +65,8 @@ class Recipe(recipe.Recipe):
                 make += ' ARCH=arm APP_ABI=armeabi'
             elif self.config.target_arch == Architecture.ARM64:
                 make += ' ARCH=arm64 OS=arm64'
+            elif self.config.target_arch == Architecture.MIPS:
+                make += ' ARCH=mips'
 
         self.make = make + ' libraries'
         # `make install` also needs the exact same parameters as `make`
