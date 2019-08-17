@@ -8,7 +8,8 @@ class Recipe(recipe.Recipe):
     stype = SourceType.TARBALL
     url = 'https://ffmpeg.org/releases/%(name)s-%(version)s.tar.bz2'
     tarball_checksum = '0cb40e3b8acaccd0ecb38aa863f66f0c6e02406246556c2992f67bf650fab058'
-    patches = ['ffmpeg/0001-configure-make-windres-option-work.patch',]
+    patches = ['ffmpeg/0001-configure-make-windres-option-work.patch',
+               'ffmpeg/0001-Add-xBurst-cpu-for-ffmpeg-of-arch-mips.patch',]
 
     btype = BuildType.MAKEFILE
     configure_tpl = './configure --prefix=%(prefix)s --libdir=%(libdir)s \
@@ -79,6 +80,10 @@ class Recipe(recipe.Recipe):
                 # from '_ff_yadif_filter_line_ssse3' in libavfilter.a(vf_yadif.o)
                 # for architecture i386
                 libavextraconf += ' --disable-asm  '
+        elif self.config.target_platform == Platform.LINUX:
+            #When I use xBusrt cpu of mips ,so we set the cpu 
+            if self.config.target_arch == Architecture.MIPS:
+                libavextraconf +=  '--cpu=xBurst'
 
         # On windows, being a multilib toolchain, we have to always configure
         # the cross-prefix
@@ -92,7 +97,10 @@ class Recipe(recipe.Recipe):
                 target_os = 'darwin'
             target_arch = self.config.host.split('-', 1)[0]
             libavextraconf += ' --target-os=' + target_os
-            libavextraconf += ' --arch=' + target_arch
+            if self.config.target_arch == Architecture.MIPS :
+                libavextraconf += ' --arch=' + "mips32r2"
+            else :
+                libavextraconf += ' --arch=' + target_arch
             libavextraconf += ' --cross-prefix={} '\
                     .format(self.config.tools_prefix or self.config.host)
 

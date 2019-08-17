@@ -1,0 +1,30 @@
+From 76eed80b1e770633190344a2575e201f1d93ad11 Mon Sep 17 00:00:00 2001
+From: Guo Di <sliver_ash@aliyun.com>
+Date: Sat, 17 Aug 2019 20:24:48 +0800
+Subject: [PATCH] Add xBurst cpu for ffmpeg of arch mips
+
+Signed-off-by: Guo Di <sliver_ash@aliyun.com>
+---
+ configure | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/configure b/configure
+index 200079e..b35660d 100755
+--- a/configure
++++ b/configure
+@@ -4832,6 +4832,12 @@ elif enabled mips; then
+                 disable mipsdsp
+                 disable mipsdspr2
+             ;;
++            xBurst)
++                enable  mips32r2
++                disable mipsfpu
++                disable mipsdsp
++                disable mipsdspr2
++			;;
+             loongson*)
+                 enable loongson2
+                 enable loongson3
+-- 
+2.17.1
+
